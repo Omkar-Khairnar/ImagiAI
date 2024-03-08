@@ -16,28 +16,26 @@ if (!cached) {
   };
 }
 
-// export const connectToDatabase = async () => {
-//   if(cached.conn) return cached.conn;
-
-//   if(!MONGODB_URL) throw new Error('Missing MONGODB_URL');
-
-//   cached.promise =
-//     cached.promise ||
-//     mongoose.connect(MONGODB_URL, {
-//       dbName: 'imaginify', bufferCommands: false
-//     })
-
-//   cached.conn = await cached.promise;
-
-//   return cached.conn;
-// }
-
 export const connectToDatabase = async () => {
-  try {
-    const databaseInstance = await mongoose.connect(`${MONGODB_URL}/ImagiAI`);
-    console.log(`MongoDB Connected !! DB Host : ${databaseInstance.connection.host}`);
-  } catch (err) {
-    console.log("Database Connection Failed : " ,err);
-    process.exit(1)
-  }
-};
+  if(cached.conn) return cached.conn;
+
+  if(!MONGODB_URL) throw new Error('Missing MONGODB_URL');
+
+  cached.promise =
+    cached.promise ||
+    mongoose.connect(`${MONGODB_URL}/`)
+
+  cached.conn = await cached.promise;
+
+  return cached.conn;
+}
+
+// export const connectToDatabase = async () => {
+//   try {
+//     const databaseInstance = await mongoose.connect(`${MONGODB_URL}/`);
+//     console.log(`MongoDB Connected !! DB Host : ${databaseInstance.connection.host}`);
+//   } catch (err) {
+//     console.log("Database Connection Failed : " ,err);
+//     process.exit(1)
+//   }
+// };
