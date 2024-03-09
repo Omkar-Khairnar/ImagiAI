@@ -9,8 +9,7 @@ import {
   FormMessage,
   FormLabel,
 } from "../ui/form";
-
-import { formSchema } from "./TransformationForm";
+import { formSchema } from "./TransfromationForm";
 
 type CustomFieldProps = {
   control: Control<z.infer<typeof formSchema>> | undefined;
