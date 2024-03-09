@@ -14,7 +14,7 @@ export async function checkoutCredits(transaction : CheckoutTransactionParams) {
         line_items:[
             {
                 price_data:{
-                    currency:'INR',
+                    currency:"inr",
                     unit_amount:amount,
                     product_data:{
                         name:transaction.plan
@@ -29,9 +29,6 @@ export async function checkoutCredits(transaction : CheckoutTransactionParams) {
             buyerId:transaction.buyerId   
         },
         mode:'payment',
-        shipping_address_collection:{
-            allowed_countries:['IN']
-        },
         success_url:`${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
         cancel_url:`${process.env.NEXT_PUBLIC_SERVER_URL}/`
     })
